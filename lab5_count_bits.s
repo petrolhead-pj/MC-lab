@@ -1,0 +1,22 @@
+AREA COUNT_BITS, CODE, READONLY
+ENTRY
+MOV R0, #13
+MOV R1, #0
+MOV R2, #0
+MOV R3, #32
+LOOP
+    AND R4, R0, #1
+    CMP R4, #0
+    BEQ ZERO
+ONE
+    ADD R1, R1, #1
+    B NEXT
+ZERO
+    ADD R2, R2, #1
+NEXT
+    LSR R0, R0, #1
+    SUBS R3, R3, #1
+    BNE LOOP
+STOP
+    B STOP
+END
